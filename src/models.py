@@ -74,5 +74,5 @@ class favorites(Base):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
     Planet_id= db.Column(db.Integer, ForeignKey('planets.id'), nullable=True)
-    People_id= db.Columndb.(Integer, ForeignKey('people.id'), nullable=True)
+    People_id= db.Columndb.(db.Integer, ForeignKey('people.id'), nullable=True)
     Vehicles_id= db.Column(db.Integer, ForeignKey('vehicles.id'), nullable=True)
