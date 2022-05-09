@@ -25,8 +25,6 @@ class User(db.Model):
         return list_users
 
 class Planet(db.Model):
-    
-    __tablename__= 'planets'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     description = db.Column(db.String(500))
@@ -68,7 +66,6 @@ class Planet(db.Model):
 
 
 class People(db.Model):
-    __tablename__= 'people'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     description = db.Column(db.String(300))
@@ -99,7 +96,6 @@ class People(db.Model):
             "hair_color": self.hair_color,
             "mass": self.mass,
             "height": self.height,
-
         }
     
     def get_people():
@@ -111,7 +107,6 @@ class People(db.Model):
     
 
 class Vehicle(db.Model):
-    __tablename__= 'vehicles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     description = db.Column(db.String(300))
@@ -152,11 +147,10 @@ class Vehicle(db.Model):
             "cargo_capacities": self.cargo_capacities,
             "consumables": self.consumables,
             "pilots": self.pilots
-
         }
 
     def get_vehicles():
-        vehicle = Vehicles.query.all()
+        vehicles = Vehicle.query.all()
         list_vehicles = []
         for vehicle in vehicles:
             list_vehicles.append(vehicle.serialize())
@@ -164,7 +158,6 @@ class Vehicle(db.Model):
 
 
 class Favorites(db.Model):
-    __tablename__= 'favorites'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     planet_id= db.Column(db.Integer, db.ForeignKey('planet.id'))
